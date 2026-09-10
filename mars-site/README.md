@@ -30,3 +30,11 @@ If you are developing a production application, we recommend enabling type-aware
 ```
 
 See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+
+## Deployment
+
+The site is deployed to GitHub Pages by `.github/workflows/deploy-pages.yml`
+whenever a commit reaches `main`. The workflow builds this project, includes the
+repository-level `CNAME` in the artifact, and configures Pages to use GitHub
+Actions rather than an unbuilt branch. A successful deployment is available at
+<https://lukegagliardi.ca/>.
