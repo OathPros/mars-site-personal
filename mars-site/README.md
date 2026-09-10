@@ -34,7 +34,19 @@ See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rule
 ## Deployment
 
 The site is deployed to GitHub Pages by `.github/workflows/deploy-pages.yml`
-whenever a commit reaches `main`. The workflow builds this project, includes the
-repository-level `CNAME` in the artifact, and configures Pages to use GitHub
-Actions rather than an unbuilt branch. A successful deployment is available at
-<https://lukegagliardi.ca/>.
+whenever a commit reaches `main`. The workflow builds this project and includes
+the repository-level `CNAME` in the artifact. A successful deployment is
+available at <https://lukegagliardi.ca/>.
+
+The compiled site is also checked in at the repository root. This fallback is
+intentional: it keeps the site working when the repository's Pages source is
+configured as `main` / `(root)` instead of GitHub Actions. After changing the
+app, refresh the fallback from the repository root with:
+
+```sh
+cd mars-site
+npm run build:pages-fallback
+```
+
+The publishing script reuses `mars-site/public/yorku-logo.png` rather than
+duplicating that binary file at the repository root.

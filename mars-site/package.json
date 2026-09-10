@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:pages-fallback": "npm run build && node scripts/publish-branch-fallback.mjs",
     "lint": "oxlint",
     "preview": "vite preview"
   },

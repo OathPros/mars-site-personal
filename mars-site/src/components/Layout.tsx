@@ -16,7 +16,7 @@ export function SiteHeader() {
       <div className="container-page flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center font-semibold tracking-tight">
           <img
-            src="/yorku-logo.png"
+            src={`${import.meta.env.BASE_URL}yorku-logo.png`}
             alt="York University"
             className="h-7 w-auto object-contain sm:h-9"
           />
