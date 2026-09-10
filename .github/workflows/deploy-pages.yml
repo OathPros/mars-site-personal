@@ -40,6 +40,16 @@ jobs:
         working-directory: mars-site
         run: npm run build
 
+      # The Vite project lives below the repository root, so its build does not
+      # automatically include the repository-level custom-domain declaration.
+      - name: Add custom domain to build
+        run: cp CNAME mars-site/dist/CNAME
+
+      - name: Verify Pages artifact
+        run: |
+          test -f mars-site/dist/index.html
+          test "$(cat mars-site/dist/CNAME)" = "$(cat CNAME)"
+
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
