@@ -1,0 +1,20 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import { getNextStep } from "../src/domain/routing.ts";
+import { aideRecommendations, routes } from "../src/domain/content.ts";
+import { dispositions, governanceRoutes, lifecycleStages, reviewStates, serviceStates, PROTOTYPE_NOTICE } from "../src/domain/model.ts";
+import { aideMarkdown, markdownDocx, solutionMarkdown } from "../src/lib/exports.ts";
+import { demoSolutions } from "../src/data/demoSolutions.ts";
+
+test("low-risk MARS prototype continues under interim guidance with optional AIDE",()=>{const r=getNextStep({stage:"prototype"});assert.equal(r.requirement,"Optional");assert.match(r.title,/interim/i);assert.match(r.why,/AIDE consultation remains available/i)});
+test("inventory demo supports finding and reusing existing work",()=>{assert.ok(demoSolutions.some(x=>`${x.name} ${x.summary}`.toLowerCase().includes("course")));assert.ok(demoSolutions.some(x=>x.relatedWork.length>0))});
+test("sensitive data routes to AIDE guidance",()=>assert.equal(getNextStep({stage:"prototype",sensitive:true}).href,routes.aide));
+test("material needs may receive IPPM advice without automatic initiative",()=>{const r=getNextStep({stage:"resources",materialResources:true});assert.match(r.why,/may recommend IPPM/);assert.doesNotMatch(r.why,/becomes an initiative/)});
+test("direct IPPM and bidirectional referral are explicit",()=>{const r=getNextStep({stage:"resources",materialResources:true});assert.match(r.why,/approach IPPM directly/);assert.match(r.why,/AIDE can advise/)});
+test("production intent routes to Change Management",()=>assert.match(getNextStep({stage:"production"}).title,/Change Management/));
+test("AIDE outcomes are recommendations, not decisions",()=>{assert.ok(aideRecommendations.includes("Proceed with conditions"));assert.equal(aideRecommendations.some(x=>/approved|rejected/i.test(x)),false)});
+test("inventory status dimensions remain separate",()=>{assert.notEqual(lifecycleStages,reviewStates);assert.ok(governanceRoutes.includes("IPPM"));assert.ok(dispositions.includes("Redirected"));assert.ok(serviceStates.includes("Live"))});
+test("local-save notice is exact",()=>assert.equal(PROTOTYPE_NOTICE,"Prototype only. Information is stored in this browser and is not submitted to York University."));
+test("exports are structured and intake does not claim submission",()=>{const record=demoSolutions[0];const md=solutionMarkdown(record);assert.match(md,/^# /);assert.match(md,/## Status/);const aide=aideMarkdown(record,{schemaVersion:1,id:"x",solutionId:record.id,helpType:"Early consultation",changedInformation:"",questions:"",createdAt:"",updatedAt:""});assert.match(aide,/has not been submitted/);assert.doesNotMatch(aide,/sent to AIDE/i)});
+test("DOCX export creates a valid ZIP-based Word document",async()=>{const bytes=new Uint8Array(await (await markdownDocx("# Test\n\n## Section\n\nReadable content")).arrayBuffer());assert.equal(String.fromCharCode(bytes[0],bytes[1]),"PK");assert.ok(bytes.length>1000)});
+test("principal route registry is complete",()=>assert.deepEqual(Object.keys(routes),["start","process","ideation","next","inventory","mars","aide","production","resources"]));

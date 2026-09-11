@@ -1,47 +1,14 @@
-import { HashRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
-import { SiteHeader, SiteFooter } from "./components/Layout";
-import { HomePage } from "./pages/HomePage";
+import { HashRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
+import { SiteFooter, SiteHeader } from "./components/Layout";
+import { migrateLegacyData } from "./data/repository";
+import { routes } from "./domain/content";
+import { AideIntakePage } from "./pages/AideIntakePage";
+import { AidePage, MarsPage, ProcessPage, ProductionPage, ResourcesPage } from "./pages/ContentPages";
 import { FindMyPathPage } from "./pages/FindMyPathPage";
-import { CommitteePage } from "./pages/CommitteePage";
-import { ProductionPage } from "./pages/ProductionPage";
-import { InventoryPage } from "./pages/InventoryPage";
-import { BuildPage } from "./pages/BuildPage";
-import { ResourcesPage } from "./pages/ResourcesPage";
+import { HomePage } from "./pages/HomePage";
 import { IdeationGuidePage } from "./pages/IdeationGuidePage";
-import { ProductionReadinessGuidePage } from "./pages/ProductionReadinessGuidePage";
+import { InventoryPage } from "./pages/InventoryPage";
 
-function ScrollToTop() {
-  const { pathname } = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
-  return null;
-}
-
-function App() {
-  return (
-    <HashRouter>
-      <ScrollToTop />
-      <div className="flex min-h-screen flex-col">
-        <SiteHeader />
-        <main className="flex-1">
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/find-my-path" element={<FindMyPathPage />} />
-            <Route path="/committee" element={<CommitteePage />} />
-            <Route path="/production" element={<ProductionPage />} />
-            <Route path="/production/guide" element={<ProductionReadinessGuidePage />} />
-            <Route path="/inventory" element={<InventoryPage />} />
-            <Route path="/build" element={<BuildPage />} />
-            <Route path="/build/ideation-guide" element={<IdeationGuidePage />} />
-            <Route path="/resources" element={<ResourcesPage />} />
-          </Routes>
-        </main>
-        <SiteFooter />
-      </div>
-    </HashRouter>
-  );
-}
-
-export default App;
+function Scroll(){const {pathname}=useLocation();useEffect(()=>{window.scrollTo(0,0);document.querySelector<HTMLElement>("main")?.focus()},[pathname]);return null}
+export default function App(){useEffect(()=>{migrateLegacyData().catch(()=>undefined)},[]);return <HashRouter><Scroll/><div className="app"><SiteHeader/><main tabIndex={-1}><Routes><Route path={routes.start} element={<HomePage/>}/><Route path={routes.process} element={<ProcessPage/>}/><Route path={routes.ideation} element={<IdeationGuidePage/>}/><Route path={routes.next} element={<FindMyPathPage/>}/><Route path={routes.inventory} element={<InventoryPage/>}/><Route path={routes.mars} element={<MarsPage/>}/><Route path={routes.aide} element={<AidePage/>}/><Route path="/aide-intake" element={<AideIntakePage/>}/><Route path={routes.production} element={<ProductionPage/>}/><Route path={routes.resources} element={<ResourcesPage/>}/>{[["/find-my-path",routes.next],["/committee",routes.aide],["/production",routes.production],["/production/guide",routes.production],["/build",routes.mars],["/build/ideation-guide",routes.ideation]].map(([old,to])=><Route key={old} path={old} element={<Navigate replace to={to}/>}/>) }<Route path="*" element={<Navigate replace to="/"/>}/></Routes></main><SiteFooter/></div></HashRouter>}
