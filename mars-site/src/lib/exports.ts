@@ -1,4 +1,3 @@
-import { Document, HeadingLevel, Packer, Paragraph, TextRun } from "docx";
 import type { AideDraft, SolutionRecord } from "../domain/model";
 
 const fields: [keyof SolutionRecord, string][] = [["summary","Summary"],["problem","Problem or need"],["intendedOutcome","Intended outcome"],["intendedUsers","Intended users"],["unit","York unit"],["owner","Owner or contact"],["platform","Platform"],["dataConsiderations","Data considerations"],["integrations","Integrations"],["resourceNeeds","Resource needs"],["supportModel","Support model"],["costs","Costs"],["risks","Risks"],["successMeasures","Success measures"],["nextAction","Next action"]];
@@ -12,6 +11,7 @@ export function aideMarkdown(record: SolutionRecord, draft: AideDraft) {
 }
 
 export async function markdownDocx(markdown: string): Promise<Blob> {
+  const { Document, HeadingLevel, Packer, Paragraph, TextRun } = await import("docx");
   const children = markdown.split("\n").filter(line => line.trim()).map(line => {
     if (line.startsWith("# ")) return new Paragraph({ text: line.slice(2), heading: HeadingLevel.TITLE });
     if (line.startsWith("## ")) return new Paragraph({ text: line.slice(3), heading: HeadingLevel.HEADING_1 });

@@ -5,6 +5,7 @@ import { aideRecommendations, routes } from "../src/domain/content.ts";
 import { dispositions, governanceRoutes, lifecycleStages, reviewStates, serviceStates, PROTOTYPE_NOTICE } from "../src/domain/model.ts";
 import { aideMarkdown, markdownDocx, solutionMarkdown } from "../src/lib/exports.ts";
 import { demoSolutions } from "../src/data/demoSolutions.ts";
+import { processSteps, primaryStepIds, relatedStepIds } from "../src/domain/process.ts";
 
 test("low-risk MARS prototype continues under interim guidance with optional AIDE",()=>{const r=getNextStep({stage:"prototype"});assert.equal(r.requirement,"Optional");assert.match(r.title,/interim/i);assert.match(r.why,/AIDE consultation remains available/i)});
 test("inventory demo supports finding and reusing existing work",()=>{assert.ok(demoSolutions.some(x=>`${x.name} ${x.summary}`.toLowerCase().includes("course")));assert.ok(demoSolutions.some(x=>x.relatedWork.length>0))});
@@ -18,3 +19,4 @@ test("local-save notice is exact",()=>assert.equal(PROTOTYPE_NOTICE,"Prototype o
 test("exports are structured and intake does not claim submission",()=>{const record=demoSolutions[0];const md=solutionMarkdown(record);assert.match(md,/^# /);assert.match(md,/## Status/);const aide=aideMarkdown(record,{schemaVersion:1,id:"x",solutionId:record.id,helpType:"Early consultation",changedInformation:"",questions:"",createdAt:"",updatedAt:""});assert.match(aide,/has not been submitted/);assert.doesNotMatch(aide,/sent to AIDE/i)});
 test("DOCX export creates a valid ZIP-based Word document",async()=>{const bytes=new Uint8Array(await (await markdownDocx("# Test\n\n## Section\n\nReadable content")).arrayBuffer());assert.equal(String.fromCharCode(bytes[0],bytes[1]),"PK");assert.ok(bytes.length>1000)});
 test("principal route registry is complete",()=>assert.deepEqual(Object.keys(routes),["start","process","ideation","next","inventory","mars","aide","production","resources"]));
+test("interactive process retains the full canonical journey and optional routes",()=>{assert.equal(primaryStepIds.length,13);assert.ok(processSteps.some(x=>x.id==="early-aide"&&x.optional));assert.ok(processSteps.some(x=>x.id==="ippm"&&x.optional));assert.ok(processSteps.some(x=>x.id==="change"&&x.kind==="gate"));assert.ok(relatedStepIds("prototype").has("need"))});
