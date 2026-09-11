@@ -6,23 +6,20 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "typecheck": "tsc -b --pretty false",
     "build:pages-fallback": "npm run build && node scripts/publish-branch-fallback.mjs",
     "lint": "oxlint",
     "preview": "vite preview"
   },
   "dependencies": {
-    "clsx": "^2.1.1",
-    "dagre": "^0.8.5",
     "docx": "^9.7.1",
-    "framer-motion": "^13.1.1",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
-    "react-router-dom": "^7.18.3",
-    "reactflow": "^11.11.4"
+    "react-router-dom": "^7.18.3"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",
-    "@types/dagre": "^0.7.54",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
