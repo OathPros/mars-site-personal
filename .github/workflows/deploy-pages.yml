@@ -22,38 +22,24 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-          cache-dependency-path: mars-site/package-lock.json
-
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Install dependencies
-        working-directory: mars-site
-        run: npm ci
-
-      - name: Build
-        working-directory: mars-site
-        run: npm run build
-
-      # The Vite project lives below the repository root, so its build does not
-      # automatically include the repository-level custom-domain declaration.
-      - name: Add custom domain to build
-        run: cp CNAME mars-site/dist/CNAME
+      - name: Prepare static site
+        run: |
+          mkdir -p "$RUNNER_TEMP/pages"
+          cp index.html favicon.svg CNAME "$RUNNER_TEMP/pages/"
 
       - name: Verify Pages artifact
         run: |
-          test -f mars-site/dist/index.html
-          test "$(cat mars-site/dist/CNAME)" = "$(cat CNAME)"
+          test -s "$RUNNER_TEMP/pages/index.html"
+          test -s "$RUNNER_TEMP/pages/favicon.svg"
+          test "$(cat "$RUNNER_TEMP/pages/CNAME")" = "lukegagliardi.ca"
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: mars-site/dist
+          path: ${{ runner.temp }}/pages
 
   deploy:
     environment:
