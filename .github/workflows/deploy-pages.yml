@@ -28,7 +28,7 @@ jobs:
       - name: Prepare static site
         run: |
           mkdir -p "$RUNNER_TEMP/pages"
-          cp index.html favicon.svg CNAME "$RUNNER_TEMP/pages/"
+          cp index.html favicon.svg knight-inspired.png CNAME "$RUNNER_TEMP/pages/"
 
       - name: Verify Pages artifact
         run: |
