@@ -384,6 +384,15 @@
     .planet--mars { width: 12rem; height: 12rem; }
     .planet--moon { display: none; }
   }
+
+  .debrief-layout { display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 2rem; }
+  .earth-globe { width: 100%; max-width: 25rem; filter: drop-shadow(0 0 30px rgba(70,180,230,.2)); }
+  .knight-ship { height: auto; position: absolute; width: clamp(10rem, 19vw, 20rem); right: 0; top: -11rem; pointer-events: none; filter: drop-shadow(0 0 20px rgba(110,190,230,.15)); }
+  @media (max-width: 60rem) {
+    .debrief-layout { grid-template-columns: 1fr; gap: 1rem; }
+    .earth-globe { max-width: 15rem; justify-self: center; }
+    .knight-ship { position: relative; display: block; margin: 0 0 1rem auto; top: auto; width: 12rem; }
+  }
 </style>
 </head>
 <body>
@@ -531,6 +540,7 @@
     <!-- 10 SCALING -->
     <section aria-labelledby="slide-10-title" class="slide" data-title="Small, medium, large" id="slide-10">
       <div class="slide-inner">
+        <img class="knight-ship" src="knight-inspired.png" alt="Knight-inspired industrial shuttle" width="1774" height="887"/>
         <span class="kicker anim" style="--delay:80ms">Stage 2 · Expand to expanse</span>
         <h2 class="anim" id="slide-10-title" style="--delay:160ms">Same foundation<br/>A whole expanse of possibilities</h2>
         <div class="scale-row anim" style="--delay:280ms">
@@ -572,35 +582,54 @@
       </div>
     </section>
 
-    <!-- 13 CALL TO ACTION -->
-    <section aria-labelledby="slide-13-title" class="slide" data-title="You don't need to be a rocket scientist" id="slide-13">
+    <!-- 13 NEXT MISSION -->
+    <section aria-labelledby="slide-13-title" class="slide" data-title="Next mission" id="slide-13">
       <div class="slide-inner">
-        <span class="kicker anim" style="--delay:80ms">Return trajectory · Call to action</span>
-        <p class="big-quote anim" style="--delay:160ms">You don't need to be a <span class="accent">rocket scientist</span></p>
-        <p class="anim" style="--delay:300ms">Developer, innovator, process expert: or simply someone who's ever thought <em>"there must be a better way to do this!"</em>: UIT is charting the path from great ideas to governed, sustainable digital solutions. And the launchpad is open</p>
-        <div class="path-flow anim" style="--delay:420ms">
-          <span class="path-step path-step--hot">Download MARS</span><span class="path-arrow" aria-hidden="true">→</span>
-          <span class="path-step">Ideation checklist</span><span class="path-arrow" aria-hidden="true">→</span>
-          <span class="path-step">Training</span><span class="path-arrow" aria-hidden="true">→</span>
-          <span class="path-step">Playground</span><span class="path-arrow" aria-hidden="true">→</span>
-          <span class="path-step">AIDE consult</span>
+        <span class="kicker anim" style="--delay:80ms">Next mission</span>
+        <h2 class="anim" id="slide-13-title" style="--delay:160ms">Where we're heading</h2>
+        <p class="lead anim" style="--delay:260ms">You don't need to be a <span class="accent">rocket scientist</span> to help shape what comes next</p>
+        <div class="grid grid--2 anim" style="--delay:360ms">
+          <div class="card"><h3>🚀 Join the pilot users</h3><p>Help us explore MARS with real ideas, real processes and feedback from York faculty and staff</p></div>
+          <div class="card"><h3>🧭 Training on the horizon</h3><p>MARS live training sessions and an online course are coming</p></div>
+          <div class="card"><h3>🛠️ Playground under construction</h3><p>A shared space for safely testing and learning is taking shape</p></div>
+          <div class="card"><h3>🛡️ AIDE taking shape</h3><p>Committee ratification and formation are underway</p></div>
         </div>
       </div>
     </section>
 
     <!-- 14 Q&A -->
-    <section aria-labelledby="slide-14-title" class="slide" data-title="Return to Earth: Q&A" id="slide-14">
-      <div class="slide-inner">
-        <div class="planet" aria-hidden="true" style="width:18rem;height:18rem;right:-5rem;bottom:-6rem;background:radial-gradient(circle at 32% 28%, #6ee7ff 0%, #2a6a9a 42%, #14304a 78%, #081422 100%);box-shadow:0 0 90px rgba(110,231,255,0.3), inset -2rem -2.5rem 4rem rgba(0,0,0,0.55);animation:planet-drift 16s ease-in-out infinite"></div>
-        <span class="kicker anim" style="--delay:80ms">🌍 Splashdown</span>
-        <h2 class="anim" id="slide-14-title" style="--delay:160ms">Questions from ground control?</h2>
-        <p class="anim" style="--delay:280ms">Thank you for flying with us today. Find us after the session: especially if you have an idea you'd like to talk through</p>
-        <div class="resources anim" style="--delay:400ms">
-          <div class="resource"><span class="tag">Build</span> Download MARS: set up your personal environment</div>
-          <div class="resource"><span class="tag">Learn</span> MARS training: platform, guardrails, practices</div>
-          <div class="resource"><span class="tag">Test</span> MARS Playground: shared non-production testing</div>
-          <div class="resource"><span class="tag">Govern</span> Request an AIDE consultation</div>
+    <section aria-labelledby="slide-14-title" class="slide" data-title="Ground control debrief" id="slide-14">
+      <div class="slide-inner debrief-layout">
+        <div class="debrief-copy">
+          <span class="kicker anim" style="--delay:80ms">🌍 Return to Earth</span>
+          <h2 class="anim" id="slide-14-title" style="--delay:160ms">Ground control<br/>debrief</h2>
+          <p class="lead anim" style="--delay:280ms">Questions?</p>
         </div>
+        <svg class="earth-globe anim" style="--delay:240ms" viewBox="0 0 400 400" role="img" aria-label="Earth with blue oceans, green continents and white clouds">
+          <defs>
+            <radialGradient id="earth-ocean" cx="30%" cy="25%" r="80%"><stop stop-color="#5ac5ec"/><stop offset=".45" stop-color="#1878ae"/><stop offset="1" stop-color="#05253e"/></radialGradient>
+            <radialGradient id="earth-shade" cx="25%" cy="25%" r="80%"><stop offset=".35" stop-color="#000" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".8"/></radialGradient>
+            <clipPath id="earth-clip"><circle cx="200" cy="200" r="178"/></clipPath>
+          </defs>
+          <circle cx="200" cy="200" r="184" fill="#65c9ef" opacity=".14"/>
+          <circle cx="200" cy="200" r="178" fill="url(#earth-ocean)"/>
+          <g clip-path="url(#earth-clip)">
+            <g fill="#6aab80" stroke="#93c5a0" stroke-width="2">
+              <path d="M38 106l34-35 42-13 34 10 23 23-7 21-29 8-15 25-17 9-3 29-24-7-11-34-23-11z"/>
+              <path d="M112 181l28 9 24 31-3 32-22 28-12 43-17-19-6-38-17-30 5-25z"/>
+              <path d="M161 42l29-10 20 19-12 33-21 9-15-26z"/>
+              <path d="M225 90l28-16 36 7 18-17 59 31 17 35-29 15-17-9-19 27-29-6-14-26-22-4-11 15-23-14z"/>
+              <path d="M223 151l39-8 28 21 7 36-19 32-8 39-21-7-18-35-16-40z"/>
+              <path d="M314 266l32-15 28 20-5 24-41 5-17-16z"/>
+              <path d="M94 357l75-11 40 9 64-6 49 19-9 22H98z" fill="#d9e8ed"/>
+            </g>
+            <g fill="none" stroke="#fff" stroke-linecap="round" opacity=".45">
+              <path d="M52 122q65-33 121-5m58-10q56-19 101 13M60 208q64-17 101 10m76 40q48-18 94 2M112 315q46 18 99 4" stroke-width="9"/>
+              <path d="M81 80q39-11 73 9m56 104q54 16 96-1M78 280q30 13 58 3" stroke-width="5"/>
+            </g>
+            <circle cx="200" cy="200" r="178" fill="url(#earth-shade)"/>
+          </g>
+        </svg>
       </div>
     </section>
 
