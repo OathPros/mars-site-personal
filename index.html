@@ -61,7 +61,6 @@
     filter: blur(90px); opacity: 0.35;
     transition: opacity 1.2s ease;
   }
-  .nebula--red { background: radial-gradient(circle, var(--york-red) 0%, transparent 65%); top: -20vmax; right: -15vmax; }
   .nebula--blue { background: radial-gradient(circle, #235a75 0%, transparent 65%); bottom: -25vmax; left: -15vmax; }
 
   .deck { position: relative; z-index: 2; width: 100%; height: 100%; min-height: 34rem; }
@@ -213,6 +212,15 @@
   .card .emoji { font-size: 1.7rem; display: block; margin-bottom: 0.55rem; filter: drop-shadow(0 0 10px rgba(255,255,255,0.25)); }
 
   .path-flow { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; margin-top: 1.5rem; }
+  #slide-02 .slide-inner { width: min(82rem, 100%); }
+  #slide-02 .path-step { white-space: nowrap; padding-inline: 1rem; letter-spacing: 0.02em; }
+  #slide-02 .path-flow { gap: 0.5rem; }
+  @media (min-width: 75rem) {
+    #slide-02 .path-flow { flex-wrap: nowrap; }
+    #slide-02 .path-step { font-size: clamp(0.75rem, 0.85vw, 1rem); padding-inline: 0.85rem; }
+  }
+  #slide-10 h2 { font-size: clamp(2rem, 3.6vw, 3rem); }
+
   .path-step {
     padding: 0.72rem 1.25rem;
     background: var(--space-2); border: 1px solid var(--line); border-radius: 99rem;
@@ -382,7 +390,6 @@
 <a class="skip-link" href="#stage">Skip to slide content</a>
 
 <canvas id="starfield" aria-hidden="true"></canvas>
-<div class="nebula nebula--red" aria-hidden="true"></div>
 <div class="nebula nebula--blue" aria-hidden="true"></div>
 
 <div class="deck" id="deck" style="--deck-progress:7.14%">
@@ -404,7 +411,7 @@
         <div class="planet planet--moon" aria-hidden="true"></div>
         <span class="kicker anim" style="--delay:80ms">Mission briefing</span>
         <h1 class="anim" id="slide-01-title" style="--delay:180ms">Houston,<br/>we have a <span class="accent">platform</span>…</h1>
-        <p class="lead anim" style="--delay:320ms">Join us aboard an expedition to <span class="accent">MARS</span> <br/>UIT's new framework for turning innovative ideas into secure internal applications with a flyby of PHOBOS, a modern web-store for computer ordering, and a stop at the proposed AIDE Committee.</p>
+        <p class="lead anim" style="--delay:320ms">Join us aboard an expedition to <span class="accent">MARS</span> <br/>UIT's new framework for turning innovative ideas into secure internal applications with a flyby of PHOBOS, a modern web-store for computer ordering, and a stop at the proposed AIDE Committee</p>
       </div>
     </section>
 
@@ -432,9 +439,9 @@
         <h2 class="anim" id="slide-03-title" style="--delay:160ms">What is MARS?</h2>
         <p class="lead anim" style="--delay:260ms">York's AI-supported platform for building, testing and launching custom digital applications and solutions</p>
         <ul class="manifest anim" style="--delay:360ms">
-          <li><span class="accent"></span><strong>Pilots!!!</strong></span> — currently in a pilot phase for York faculty and staff</li>
-          <li><span class="accent"></span><strong>Purpose</strong></span> — to empower employees to transform ideas into university applications</li>
-          <li><span class="accent"></span><strong>Path</strong></span> — Idea → Prototype → Playground → Production</li>
+          <li><strong class="accent">PILOTS</strong> currently in a pilot phase for York faculty and staff</li>
+          <li><strong class="accent">PURPOSE</strong> to empower employees to transform ideas into university applications</li>
+          <li><strong class="accent">PATH</strong> Idea → Prototype → Playground → Production</li>
         </ul>
         <p class="anim" style="--delay:460ms">AI made it possible for anyone to build. MARS makes it <em>safe, supported and repeatable</em></p>
       </div>
@@ -445,10 +452,10 @@
       <div class="slide-inner">
         <span class="kicker anim" style="--delay:80ms">Stage 1 · The platform</span>
         <h2 class="anim" id="slide-04-title" style="--delay:160ms">Built for people who think, <span class="accent">"there's got to be a better way!"</span></h2>
-        <p class="anim" style="--delay:280ms">Working with AI, MARS gives non-developers (<span class="accent"><em>vibe coders</em></span>) a supported way to turn ideas into working apps. Replace a manual process. Simplify a cumbersome workflow. <br/><span class="accent"><em>Create that thing York has always needed.</em></span></p>
+        <p class="anim" style="--delay:280ms">Working with AI, MARS gives non-developers (<span class="accent"><em>vibe coders</em></span>) a supported way to turn ideas into working apps. Replace a manual process. Simplify a cumbersome workflow. <br/><span class="accent"><em>Create that thing York has always needed</em></span></p>
         <div class="grid grid--3 anim" style="--delay:400ms">
           <div class="card"><span class="emoji" aria-hidden="true">🌱</span><h3>Start small</h3><p>Your first version exists to help you learn, not to be perfect</p></div>
-          <div class="card"><span class="emoji" aria-hidden="true">🔬</span><h3>Learn fast</h3><p>Experimentation is easy by design; we have flight plans that keep you and York safe.</p></div>
+          <div class="card"><span class="emoji" aria-hidden="true">🔬</span><h3>Learn fast</h3><p>Experimentation is easy by design; we have flight plans that keep you and York safe</p></div>
           <div class="card"><span class="emoji" aria-hidden="true">📈</span><h3>Scale responsibly</h3><p>Governance arrives at the right moment, not as an asteroid to take you off course one</p></div>
         </div>
       </div>
@@ -462,9 +469,9 @@
         <p class="anim" style="--delay:260ms">Think of it like building a house in a city:</p>
         <div class="grid grid--2 anim" style="--delay:360ms">
           <div class="card"><h3>🏙️ MARS = the city</h3><p>Shared roads, utilities and bylaws. You don't pave a new street to build a house</p></div>
-          <div class="card"><h3>🏗️ Workspace = a serviced lot</h3><p>A standard container per app — zoned, foundation poured, ready to build on</p></div>
+          <div class="card"><h3>🏗️ Workspace = a serviced lot</h3><p>A standard container per app: zoned, foundation poured, ready to build on</p></div>
           <div class="card"><h3>📐 York context = building code</h3><p>Passport York, design standards and supported languages are built in from the start</p></div>
-          <div class="card"><h3>👷 AI = the construction crew</h3><p>You give the orders; it builds to plan and to code — inside the MARS structure</p></div>
+          <div class="card"><h3>👷 AI = the construction crew</h3><p>You give the orders; it builds to plan and to code: inside the MARS structure</p></div>
         </div>
         <p class="anim" style="--delay:480ms"><strong>You don't build a city every time you need a house</strong></p>
       </div>
@@ -476,7 +483,7 @@
         <div class="planet planet--moon" aria-hidden="true" style="display:block;width:12rem;height:12rem;right:-3rem;bottom:-4rem;top:auto;background:radial-gradient(circle at 35% 30%, #d8c8b8 0%, #9a8570 55%, #4a3c30 100%)"></div>
         <span class="kicker anim" style="--delay:80ms">Stage 2 · Case study</span>
         <h2 class="anim" id="slide-06-title" style="--delay:160ms"><span class="scanline" aria-hidden="true">🛰️</span> Scanners show a process in distress…</h2>
-        <p class="lead anim" style="--delay:280ms">Computer ordering at York: a largely manual process that deserved to be a modern web-store experience.</p>
+        <p class="lead anim" style="--delay:280ms">Computer ordering at York: a largely manual process that deserved to be a modern web-store experience</p>
         <p class="anim" style="--delay:380ms">Enter <strong>PHOBOS</strong> a MARS-designed custom application that finally cracked it<br/>Even if getting to orbit took a few missions</p>
       </div>
     </section>
@@ -487,11 +494,11 @@
         <span class="kicker anim" style="--delay:80ms">Stage 2 · Case study</span>
         <h2 class="anim" id="slide-07-title" style="--delay:160ms">Three launches<br/>Three scrubbed missions</h2>
         <div class="anim" style="--delay:280ms">
-          <div class="attempt"><span class="n" aria-hidden="true">📝</span><div><strong>Halo</strong><small>Halo forms were functional, but a form is not a shopping experience and maitenance is a killer</small></div><span class="verdict">Not effective enough</span></div>
+          <div class="attempt"><span class="n" aria-hidden="true">📝</span><div><strong>Halo</strong><small>Halo forms were functional, but a form is not a shopping experience, and maintenance is a killer</small></div><span class="verdict">Not flexible enough</span></div>
           <div class="attempt"><span class="n" aria-hidden="true">🌐</span><div><strong>WordPress</strong><small>Better browsing, but built on the wrong foundation</small></div><span class="verdict">Not robust enough</span></div>
           <div class="attempt"><span class="n" aria-hidden="true">🛒</span><div><strong>SMARTBUY</strong><small>Not ready for that type of solution</small></div><span class="verdict">uncharted expanse</span></div>
         </div>
-        <p class="anim" style="--delay:420ms">What makes York special, makes out-of-the-box solutions <em>challenger missions...</em></p>
+        <p class="anim" style="--delay:420ms">What makes York special, makes out-of-the-box solutions <em>challenger missions..</em></p>
       </div>
     </section>
 
@@ -499,14 +506,15 @@
     <section aria-labelledby="slide-08-title" class="slide" data-title="Why MARS worked" id="slide-08">
       <div class="slide-inner">
         <span class="kicker anim" style="--delay:80ms">Stage 2 · Case study</span>
-        <h2 class="anim" id="slide-08-title" style="--delay:160ms">Nothing in orbit worked<br/>so we went to MARS<span class="rocket" aria-hidden="true">🚀</span></h2>
+        <h2 class="anim" id="slide-08-title" style="--delay:160ms">An app built for<br/>our mission 🚀</h2>
+        <p class="lead anim" style="--delay:220ms">MARS let us build around our process, its quirks and the shopping experience our users needed</p>
         <div class="grid grid--2 anim" style="--delay:280ms">
-          <div class="card"><h3>📦 Safe by default</h3><p>A local, containerized workspace — build and test without procurement or infrastructure tickets</p></div>
-          <div class="card"><h3>🤖 AI with guardrails</h3><p>AI-assisted development inside an established structure — speed without chaos</p></div>
-          <div class="card"><h3>🍁 York context built in</h3><p>Passport York and institutional standards from day one — no retrofitting</p></div>
-          <div class="card"><h3>🛤️ A path forward</h3><p>Playground → Production is a supported route, not a dead end</p></div>
+          <div class="card"><h3>🧭 Our process sets the course</h3><p>We shaped the app to fit how we work, without changing our process to fit a product or working around features we couldn't change</p></div>
+          <div class="card"><h3>🚀 Progress between operations</h3><p>Run a prompt while heading to lunch, annotate screenshots with changes and keep building alongside daily work</p></div>
+          <div class="card"><h3>👩‍🚀 Built by the ground crew</h3><p>The people who know the process, its quirks and the user experience could turn that knowledge into a working solution</p></div>
+          <div class="card"><h3>🌌 A mission within reach</h3><p>What once would have needed a full project and a team of developers became something we could deliver flexibly around operations</p></div>
         </div>
-        <p class="anim" style="--delay:440ms">For small apps like this, MARS wasn't just <em>a</em> fit — it was the perfect platform</p>
+        <p class="anim" style="--delay:440ms"><strong class="accent">BUILD VS BUY</strong><br/>We chose to fly</p>
       </div>
     </section>
 
@@ -516,17 +524,17 @@
         <span class="kicker anim" style="--delay:80ms">Stage 2 · Case study</span>
         <h2 class="anim" id="slide-09-title" style="--delay:160ms">PHOBOS today: from manual process to web store</h2>
         <p class="lead anim" style="--delay:280ms">What used to be forms, emails and follow-ups is now a modern browsing-and-ordering experience</p>
-        <p class="anim" style="--delay:400ms">🖥️ <em>[ Demo moment — live walkthrough or screenshot tour ]</em></p>
+        <p class="anim" style="--delay:400ms">🖥️ <em>[ Demo moment: live walkthrough or screenshot tour ]</em></p>
       </div>
     </section>
 
     <!-- 10 SCALING -->
     <section aria-labelledby="slide-10-title" class="slide" data-title="Small, medium, large" id="slide-10">
       <div class="slide-inner">
-        <span class="kicker anim" style="--delay:80ms">Stage 2 · Payload capacity</span>
-        <h2 class="anim" id="slide-10-title" style="--delay:160ms">Same foundation. Any payload size.</h2>
+        <span class="kicker anim" style="--delay:80ms">Stage 2 · Expand to expanse</span>
+        <h2 class="anim" id="slide-10-title" style="--delay:160ms">Same foundation<br/>A whole expanse of possibilities</h2>
         <div class="scale-row anim" style="--delay:280ms">
-          <div class="scale-card"><small>Small</small><strong>PHOBOS 🛰️</strong><p>The computer purchase tool — proof that small apps thrive on MARS</p></div>
+          <div class="scale-card"><small>Small</small><strong>PHOBOS 🛰️</strong><p>The computer purchase tool: proof that small apps thrive on MARS</p></div>
           <div class="scale-card"><small>Medium</small><strong>IPPM 📊</strong><p>Scaling up to institutional portfolio-sized needs</p></div>
           <div class="scale-card"><small>Large</small><strong>SOPHIA 🌌</strong><p>MARS at the largest end of the spectrum</p></div>
         </div>
@@ -539,11 +547,11 @@
         <span class="kicker anim" style="--delay:80ms">Stage 3 · The process</span>
         <h2 class="anim" id="slide-11-title" style="--delay:160ms">Your flight path: idea → prototype</h2>
         <ul class="manifest anim" style="--delay:280ms">
-          <li><strong>Idea</strong> — start with the problem, not the tech. What's difficult, slow or manual today?</li>
-          <li><strong>Inventory</strong> — check York first. Reuse beats rebuild.</li>
-          <li><strong>Learn</strong> — MARS training + safe AI tooling (GitHub Copilot).</li>
-          <li><strong>Prototype</strong> — build the smallest useful version in your own environment</li>
-          <li><strong>Playground</strong> — share and test safely with real users in a York-hosted non-production space</li>
+          <li><strong>Idea</strong>: start with the problem, not the tech. What's difficult, slow or manual today?</li>
+          <li><strong>Inventory</strong>: check York first. Reuse beats rebuild.</li>
+          <li><strong>Learn</strong>: MARS training + safe AI tooling (GitHub Copilot).</li>
+          <li><strong>Prototype</strong>: build the smallest useful version in your own environment</li>
+          <li><strong>Playground</strong>: share and test safely with real users in a York-hosted non-production space</li>
         </ul>
         <p class="anim" style="--delay:420ms">You don't need a complete plan before you begin. <strong>Your first version exists to help you learn</strong></p>
       </div>
@@ -554,13 +562,13 @@
       <div class="slide-inner">
         <span class="kicker anim" style="--delay:80ms">Stage 3 · Governance ahead</span>
         <h2 class="anim" id="slide-12-title" style="--delay:160ms">Scanners show governance ahead: meet AIDE 🛡️</h2>
-        <p class="anim" style="--delay:260ms">The proposed <strong>AI Development Enablement (AIDE) Committee</strong> — how York encourages AI-enabled innovation while maintaining governance, accountability, privacy, security, accessibility and human oversight.</p>
+        <p class="anim" style="--delay:260ms">The proposed <strong>AI Development Enablement (AIDE) Committee</strong>: how York encourages AI-enabled innovation while maintaining governance, accountability, privacy, security, accessibility and human oversight</p>
         <div class="grid grid--3 anim" style="--delay:380ms">
-          <div class="card"><span class="emoji" aria-hidden="true">🧭</span><h3>Guide</h3><p>Advice on ideating and designing with AI — from half-baked idea to gigabyte BRD</p></div>
-          <div class="card"><span class="emoji" aria-hidden="true">🤝</span><h3>Connect</h3><p>Security, privacy, architecture, accessibility, operations and funding — in the conversation early.</p></div>
-          <div class="card"><span class="emoji" aria-hidden="true">🛰️</span><h3>Route</h3><p>IPPM? Change Management? Security review? DON'T WORRY — that's what we're here for</p></div>
+          <div class="card"><span class="emoji" aria-hidden="true">🧭</span><h3>Guide</h3><p>Advice on ideating and designing with AI: from half-baked idea to gigabyte BRD</p></div>
+          <div class="card"><span class="emoji" aria-hidden="true">🤝</span><h3>Connect</h3><p>Security, privacy, architecture, accessibility, operations and funding: in the conversation early</p></div>
+          <div class="card"><span class="emoji" aria-hidden="true">🛰️</span><h3>Route</h3><p>IPPM? Change Management? Security review? DON'T WORRY: that's what we're here for</p></div>
         </div>
-        <p class="anim" style="--delay:500ms">Mission control, not a no-fly zone: <strong>could ≠ should</strong> — AIDE recommends the right route: reuse, operational change, or formal initiative.</p>
+        <p class="anim" style="--delay:500ms">Mission control, not a no-fly zone: <strong>could ≠ should</strong>: AIDE recommends the right route: reuse, operational change, or formal initiative</p>
       </div>
     </section>
 
@@ -568,8 +576,8 @@
     <section aria-labelledby="slide-13-title" class="slide" data-title="You don't need to be a rocket scientist" id="slide-13">
       <div class="slide-inner">
         <span class="kicker anim" style="--delay:80ms">Return trajectory · Call to action</span>
-        <p class="big-quote anim" style="--delay:160ms">You don't need to be a <span class="accent">rocket scientist</span>.</p>
-        <p class="anim" style="--delay:300ms">Developer, innovator, process expert — or simply someone who's ever thought <em>"there must be a better way to do this!"</em> — UIT is charting the path from great ideas to governed, sustainable digital solutions. And the launchpad is open.</p>
+        <p class="big-quote anim" style="--delay:160ms">You don't need to be a <span class="accent">rocket scientist</span></p>
+        <p class="anim" style="--delay:300ms">Developer, innovator, process expert: or simply someone who's ever thought <em>"there must be a better way to do this!"</em>: UIT is charting the path from great ideas to governed, sustainable digital solutions. And the launchpad is open</p>
         <div class="path-flow anim" style="--delay:420ms">
           <span class="path-step path-step--hot">Download MARS</span><span class="path-arrow" aria-hidden="true">→</span>
           <span class="path-step">Ideation checklist</span><span class="path-arrow" aria-hidden="true">→</span>
@@ -586,11 +594,11 @@
         <div class="planet" aria-hidden="true" style="width:18rem;height:18rem;right:-5rem;bottom:-6rem;background:radial-gradient(circle at 32% 28%, #6ee7ff 0%, #2a6a9a 42%, #14304a 78%, #081422 100%);box-shadow:0 0 90px rgba(110,231,255,0.3), inset -2rem -2.5rem 4rem rgba(0,0,0,0.55);animation:planet-drift 16s ease-in-out infinite"></div>
         <span class="kicker anim" style="--delay:80ms">🌍 Splashdown</span>
         <h2 class="anim" id="slide-14-title" style="--delay:160ms">Questions from ground control?</h2>
-        <p class="anim" style="--delay:280ms">Thank you for flying with us today. Find us after the session — especially if you have an idea you'd like to talk through</p>
+        <p class="anim" style="--delay:280ms">Thank you for flying with us today. Find us after the session: especially if you have an idea you'd like to talk through</p>
         <div class="resources anim" style="--delay:400ms">
-          <div class="resource"><span class="tag">Build</span> Download MARS — set up your personal environment</div>
-          <div class="resource"><span class="tag">Learn</span> MARS training — platform, guardrails, practices</div>
-          <div class="resource"><span class="tag">Test</span> MARS Playground — shared non-production testing</div>
+          <div class="resource"><span class="tag">Build</span> Download MARS: set up your personal environment</div>
+          <div class="resource"><span class="tag">Learn</span> MARS training: platform, guardrails, practices</div>
+          <div class="resource"><span class="tag">Test</span> MARS Playground: shared non-production testing</div>
           <div class="resource"><span class="tag">Govern</span> Request an AIDE consultation</div>
         </div>
       </div>
