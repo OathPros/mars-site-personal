@@ -393,6 +393,32 @@
     .earth-globe { max-width: 15rem; justify-self: center; }
     .knight-ship { position: relative; display: block; margin: 0 0 1rem auto; top: auto; width: 12rem; }
   }
+
+  .aide-process { width: min(80rem, 100%); }
+  .aide-process > .lead { max-width: none; margin-bottom: 1.5rem; }
+  .mission-route { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; list-style: none; padding: 0; margin: 0 0 1.5rem; }
+  .mission-route li { position: relative; border-top: 2px solid var(--york-red); padding: 1rem 0.75rem 0 0; }
+  .mission-route li:not(:last-child)::after { content: '→'; position: absolute; right: -0.8rem; top: -1rem; color: var(--york-red); background: #05060f; font-size: 1.5rem; }
+  .mission-number { color: #ff8a9c; font-size: .8rem; letter-spacing: .2em; }
+  .mission-route h3 { font-size: 1rem; margin: .55rem 0; }
+  .mission-route p, .mission-outcomes p { font-size: .85rem; line-height: 1.5; margin: 0; }
+  .mission-control { padding: 1.2rem; border: 1px solid rgba(227,24,55,.45); border-radius: .8rem; background: var(--space-2); }
+  .mission-control-heading { display: flex; align-items: center; flex-wrap: wrap; gap: .7rem; }
+  .mission-control-heading h3 { margin: 0; font-size: 1.1rem; }
+  .mission-control-note { color: var(--muted); font-size: .8rem; margin-left: auto; }
+  .mission-review { font-size: .85rem; max-width: none; margin: .8rem 0 1rem; }
+  .mission-outcomes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+  .mission-outcomes > div { border-top: 1px solid var(--line); padding-top: .8rem; }
+  .route-code { display: block; font-size: .72rem; letter-spacing: .12em; color: #ff8a9c; margin-bottom: .5rem; }
+  .mission-outcomes strong { display: block; font-size: .95rem; margin-bottom: .4rem; }
+  @media (max-width: 60rem) {
+    .mission-route, .mission-outcomes { grid-template-columns: repeat(2, 1fr); }
+    .mission-route li::after { display: none; }
+    .mission-control-note { margin-left: 0; }
+  }
+  @media (max-width: 35rem) {
+    .mission-route, .mission-outcomes { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -401,12 +427,12 @@
 <canvas id="starfield" aria-hidden="true"></canvas>
 <div class="nebula nebula--blue" aria-hidden="true"></div>
 
-<div class="deck" id="deck" style="--deck-progress:7.14%">
+<div class="deck" id="deck" style="--deck-progress:6.67%">
 
   <header class="deck-chrome">
     <div class="chrome-brand"><span class="patch" aria-hidden="true">🚀</span> UIT Mission Control</div>
     <div class="chrome-title">MARS · ITDAY 2026</div>
-    <div class="chrome-meta"><span id="slideCounter" class="slide-counter">01 / 14</span></div>
+    <div class="chrome-meta"><span id="slideCounter" class="slide-counter">01 / 15</span></div>
   </header>
 
   <nav aria-label="Slides" class="slide-rail" id="slideRail"></nav>
@@ -579,6 +605,31 @@
           <div class="card"><span class="emoji" aria-hidden="true">🛰️</span><h3>Route</h3><p>IPPM? Change Management? Security review? DON'T WORRY: that's what we're here for</p></div>
         </div>
         <p class="anim" style="--delay:500ms">Mission control, not a no-fly zone: <strong>could ≠ should</strong>: AIDE recommends the right route: reuse, operational change, or formal initiative</p>
+      </div>
+    </section>
+
+    <!-- AIDE PROCESS -->
+    <section aria-labelledby="slide-aide-process-title" class="slide" data-title="AIDE: prototype to production" id="slide-aide-process">
+      <div class="slide-inner aide-process">
+        <span class="kicker anim" style="--delay:80ms">Stage 3 · Mission flight plan</span>
+        <h2 class="anim" id="slide-aide-process-title" style="--delay:160ms">From first idea to launch</h2>
+        <p class="lead anim" style="--delay:240ms">You build the prototype · AIDE helps chart the right route</p>
+        <ol class="mission-route anim" style="--delay:320ms" aria-label="Builder flight path">
+          <li><span class="mission-number">01</span><h3>Check the coordinates</h3><p>Check the AI Inventory<br/>Already solved? Reuse the tool or contact its owner</p></li>
+          <li><span class="mission-number">02</span><h3>Build your prototype</h3><p>Download MARS, build, test and improve<br/>Optional help: training, AIDE consult and ideation checklist</p></li>
+          <li><span class="mission-number">03</span><h3>Request flight support</h3><p>Need York resources? IDEATION request<br/>Need MARS Playground? PLAYGROUND request</p></li>
+          <li><span class="mission-number">04</span><h3>Ready for production?</h3><p>Submit a Production Readiness Request to AIDE<br/>Not ready? Keep building and testing</p></li>
+        </ol>
+        <div class="mission-control anim" style="--delay:400ms">
+          <div class="mission-control-heading"><span aria-hidden="true">🛡️</span><h3>AIDE · Mission control</h3><span class="mission-control-note">Consult when needed or requested</span></div>
+          <p class="mission-review">Review the idea and update the inventory · Production requests go to INFOSEC for a vulnerability scan assessment, then back to AIDE</p>
+          <div class="mission-outcomes" aria-label="AIDE consultation routes">
+            <div><span class="route-code">STANDARD</span><strong>Continue the mission</strong><p>Keep working; when ready for production, AIDE supports your CAB submission</p></div>
+            <div><span class="route-code">SANDBOX</span><strong>Test in a safe orbit</strong><p>Promote to Sandbox through a service request to the MARS team</p></div>
+            <div><span class="route-code">IPPM</span><strong>A larger mission</strong><p>A formal initiative is needed; AIDE supports your IPPM submission</p></div>
+            <div><span class="route-code">STOP / REDIRECT</span><strong>Choose another course</strong><p>Stop, combine or redirect the work and update the inventory</p></div>
+          </div>
+        </div>
       </div>
     </section>
 
