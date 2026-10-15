@@ -28,12 +28,13 @@ jobs:
       - name: Prepare static site
         run: |
           mkdir -p "$RUNNER_TEMP/pages"
-          cp index.html favicon.svg knight-inspired.png CNAME "$RUNNER_TEMP/pages/"
+          cp index.html favicon.svg knight-inspired.png "QRCode for Join the MARS pilot testing fleet!.png" CNAME "$RUNNER_TEMP/pages/"
 
       - name: Verify Pages artifact
         run: |
           test -s "$RUNNER_TEMP/pages/index.html"
           test -s "$RUNNER_TEMP/pages/favicon.svg"
+          test -s "$RUNNER_TEMP/pages/QRCode for Join the MARS pilot testing fleet!.png"
           test "$(cat "$RUNNER_TEMP/pages/CNAME")" = "lukegagliardi.ca"
 
       - name: Upload GitHub Pages artifact
