@@ -451,6 +451,13 @@
     .build-item { transition-delay: 0ms; }
     .overview-tile { transition: none; }
   }
+
+  .pilot-signup { display: flex; align-items: center; gap: 1.4rem; margin-top: 1.2rem; padding: 1rem 1.3rem; border: 1px solid var(--line); border-radius: .8rem; background: var(--space-2); }
+  .pilot-signup img { display: block; width: 10rem; height: auto; border-radius: .6rem; }
+  .pilot-signup h3 { margin: 0 0 .5rem; font-size: 1.1rem; }
+  .pilot-signup p { margin: 0 0 .5rem; font-size: .9rem; }
+  .pilot-signup a { color: var(--cyan); text-underline-offset: .2em; }
+  @media (max-width: 35rem) { .pilot-signup { flex-direction: column; align-items: flex-start; } .pilot-signup img { width: 12rem; } }
 </style>
 </head>
 <body>
@@ -677,6 +684,10 @@
           <div class="card"><h3>🧭 Training on the horizon</h3><p>MARS live training sessions and an online course are coming</p></div>
           <div class="card"><h3>🛠️ Playground under construction</h3><p>A shared space for safely testing and learning is taking shape</p></div>
           <div class="card"><h3>🛡️ AIDE taking shape</h3><p>Committee ratification and formation are underway</p></div>
+        </div>
+        <div class="pilot-signup anim">
+          <a href="https://forms.cloud.microsoft/r/CCvLu5NaxQ" target="_blank" rel="noopener noreferrer" aria-label="Open MARS pilot signup form (opens in a new tab)"><img src="./QRCode%20for%20Join%20the%20MARS%20pilot%20testing%20fleet!.png" alt="QR code for the MARS pilot signup form" width="1890" height="1890"/></a>
+          <div><h3>Join the MARS pilot testing fleet!</h3><p>Scan the QR code to sign up, or open the form below.</p><a href="https://forms.cloud.microsoft/r/CCvLu5NaxQ" target="_blank" rel="noopener noreferrer">Sign up for the pilot ↗</a></div>
         </div>
       </div>
     </section>
