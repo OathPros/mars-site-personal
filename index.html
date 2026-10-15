@@ -464,6 +464,10 @@
   #slide-fleet .pilot-signup h3 { font-size: clamp(1.25rem, 2.3vw, 1.8rem); line-height: 1.3; }
   #slide-fleet .pilot-signup p { font-size: 1rem; }
   @media (max-width: 60rem) { #slide-fleet .pilot-signup { flex-direction: column; align-items: flex-start; gap: 1.2rem; } }
+
+  #slide-fleet .pilot-signup img { border-radius: 0; clip-path: inset(2px round 1.2rem); }
+  #slide-fleet .pilot-signup a { overflow-wrap: anywhere; }
+  #slide-fleet .pilot-signup > div { min-width: 0; }
 </style>
 </head>
 <body>
@@ -699,10 +703,9 @@
     <section aria-labelledby="slide-fleet-title" class="slide" data-title="JOIN THE FLEET" id="slide-fleet">
       <div class="slide-inner">
         <span class="kicker anim">Your next mission</span>
-        <h2 class="anim" id="slide-fleet-title">JOIN THE FLEET</h2>
         <div class="pilot-signup anim">
           <a href="https://forms.cloud.microsoft/r/CCvLu5NaxQ" target="_blank" rel="noopener noreferrer" aria-label="Open MARS pilot signup form (opens in a new tab)"><img src="./QRCode%20for%20Join%20the%20MARS%20pilot%20testing%20fleet!.png" alt="QR code for the MARS pilot signup form" width="1890" height="1890"/></a>
-          <div><h3>Join the MARS pilot testing fleet!</h3><p>Scan the QR code to sign up, or open the form below.</p><a href="https://forms.cloud.microsoft/r/CCvLu5NaxQ" target="_blank" rel="noopener noreferrer">Sign up for the pilot ↗</a></div>
+          <div><h3 id="slide-fleet-title">Join the MARS pilot testing fleet!</h3><p>Scan the QR code to sign up, or visit the URL below.</p><a href="https://forms.cloud.microsoft/r/CCvLu5NaxQ" target="_blank" rel="noopener noreferrer">https://forms.cloud.microsoft/r/CCvLu5NaxQ</a></div>
         </div>
       </div>
     </section>
